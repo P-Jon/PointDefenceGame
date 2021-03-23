@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using RaylibDemo.core.Data;
+using RaylibDemo.UI;
+
 using RaylibDemo.player;
 using Raylib_cs;
-using static Raylib_cs.Raylib;
 using static Raylib_cs.Color;
 
 namespace RaylibDemo.core
 {
     public class GameDemo
     {
+        private PlayerController player;
+        private UIHandler _uiHandler = new UIHandler();
+
         private static void Main(string[] args)
         {
             new GameDemo();
@@ -18,34 +20,45 @@ namespace RaylibDemo.core
         public GameDemo()
         {
             Raylib.InitWindow(GameData.screenWidth, GameData.screenHeight, "DemoGame");
-            var player = new PlayerController();
-            while (!WindowShouldClose())    // Detect window close button or ESC key
+            Raylib.SetTargetFPS(60);
+
+            player = new PlayerController();
+
+            while (!Raylib.WindowShouldClose())    // Detect window close button or ESC key
             {
-                // Update
-                //----------------------------------------------------------------------------------
-                handleMouseInput();
-                handleKeyboardInput();
+                Update();
 
-                // Draw
-                //----------------------------------------------------------------------------------
-                BeginDrawing();
-                ClearBackground(RAYWHITE);
+                _uiHandler.DrawUI();
 
-                player.DrawPlayer();
-                DrawText("Welcome", 10, 10, 50, MAROON);
-
-                EndDrawing();
-                //----------------------------------------------------------------------------------
+                Draw();
             }
 
-            // De-Initialization
-            //--------------------------------------------------------------------------------------
-            CloseWindow();        // Close window and OpenGL context
-            //--------------------------------------------------------------------------------------
+            Raylib.CloseWindow();        // Close window and OpenGL context
+        }
+
+        private void Update()
+        {
+            handleMouseInput();
+            handleKeyboardInput();
+        }
+
+        private void Draw()
+        {
+            Raylib.BeginDrawing();
+            Raylib.ClearBackground(RAYWHITE);
+
+            player.DrawPlayer();
+            Raylib.DrawText("Welcome", 10, 10, 50, MAROON);
+
+            Raylib.EndDrawing();
         }
 
         private void handleMouseInput()
         {
+            if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
+            {
+                player.ChangePosition(Raylib.GetMouseX(), Raylib.GetMouseY());
+            }
         }
 
         private void handleKeyboardInput()

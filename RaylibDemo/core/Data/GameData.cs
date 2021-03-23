@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RaylibDemo.core
+﻿namespace RaylibDemo.core.Data
 {
     public class GameData
     {
