@@ -1,6 +1,5 @@
-﻿using System;
-using Raylib_cs;
-using static Raylib_cs.Color;
+﻿using Raylib_cs;
+using System.Linq;
 
 namespace RaylibDemo.UI.Components
 {
@@ -8,7 +7,7 @@ namespace RaylibDemo.UI.Components
     {
         private Rectangle buttonBody;
         private Color buttonColor;
-
+        private int halfFontSize;
         private string buttonText;
         private int fontSize;
         private Color textColor;
@@ -21,29 +20,37 @@ namespace RaylibDemo.UI.Components
         /// <param name="text">Button Text</param>
         /// <param name="rect">Button Rectangle Parameters</param>
         /// <param name="fontSize">Font Size</param>
-        /// <param name="color">Colour of Button</param>
+        /// <param name="textColor">Colour of Text</param>
+        /// <param name="buttonColor">Colour of Button</param>
         public Button(string text, Rectangle rect, int fontSize, Color textColor, Color buttonColor)
         {
-            textWidth = Raylib.MeasureText(text, fontSize);
-            buttonText = text;
+            // int textWidth = Raylib.MeasureText(text, fontSize); Returns 0, seems to be Raylibs fault
 
+            // Trying to compensate for the broken function
+            halfFontSize = fontSize / 2;
+            var spacings = text.Count(char.IsWhiteSpace) * halfFontSize;
+
+            textWidth = ((text.Length * halfFontSize) + halfFontSize) + spacings;
+            // -- end compensate --
+
+            buttonText = text;
             this.buttonColor = buttonColor;
             this.textColor = textColor;
             this.fontSize = fontSize;
 
-            if (fontSize > rect.width)
-                rect.width = fontSize + (fontSize / 2);
+            rect.width = textWidth + halfFontSize;
 
             buttonBody = rect;
         }
 
         public override void draw()
         {
-            var textY = (int)buttonBody.y + (((int)buttonBody.height / 2) - (fontSize / 2)); // Drawing to the middle of the button height
-            var textX = buttonBody.x + (fontSize * 2);
+            var textY = (int)buttonBody.y + (((int)buttonBody.height / 2) - halfFontSize); // Drawing to the middle of the button height
+            var textX = (int)buttonBody.x + ((int)buttonBody.width / 2) - (textWidth / 2);
+
             Raylib.DrawRectangleRec(buttonBody, buttonColor);
 
-            Raylib.DrawText(buttonText, (int)buttonBody.x + 5, textY, fontSize, textColor);
+            Raylib.DrawText(buttonText, textX, textY, fontSize, textColor);
         }
     }
 }

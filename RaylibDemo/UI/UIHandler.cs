@@ -11,7 +11,10 @@ namespace RaylibDemo.UI
     {
         private List<Button> buttons = new List<Button>
         {
-            new Button("New Game", new Rectangle(300,300,100,40), 24, new Color(0,0,0,255), new Color(50,168,82,255))
+            new Button("New Game", new Rectangle(300,300,100,60), 40, new Color(0,0,0,255), new Color(50,168,82,255)),
+            new Button("Settings", new Rectangle(300,400,100,60), 40, new Color(0,0,0,255), new Color(50,168,82,255)),
+            new Button("Exit", new Rectangle(300,500,100,60), 40, new Color(0,0,0,255), new Color(50,168,82,255)),
+            new Button("Credits", new Rectangle(300,600,100,60), 40, new Color(0,0,0,255), new Color(50,168,82,255)),
         };
 
         public UIHandler()
