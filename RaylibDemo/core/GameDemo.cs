@@ -28,8 +28,6 @@ namespace RaylibDemo.core
             {
                 Update();
 
-                _uiHandler.DrawUI();
-
                 Draw();
             }
 
@@ -48,6 +46,8 @@ namespace RaylibDemo.core
             Raylib.ClearBackground(RAYWHITE);
 
             player.DrawPlayer();
+            _uiHandler.DrawUI();
+
             Raylib.DrawText("Welcome", 10, 10, 50, MAROON);
 
             Raylib.EndDrawing();

@@ -1,4 +1,5 @@
 ﻿using Raylib_cs;
+using static RaylibDemo.Helper.TextAlignment;
 using System.Linq;
 
 namespace RaylibDemo.UI.Components
@@ -45,7 +46,7 @@ namespace RaylibDemo.UI.Components
 
         public override void draw()
         {
-            var textY = (int)buttonBody.y + (((int)buttonBody.height / 2) - halfFontSize); // Drawing to the middle of the button height
+            var textY = MiddleYAlignmentRect(buttonBody, fontSize, true); // Drawing to the middle of the button height
             var textX = (int)buttonBody.x + ((int)buttonBody.width / 2) - (textWidth / 2);
 
             Raylib.DrawRectangleRec(buttonBody, buttonColor);

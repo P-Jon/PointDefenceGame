@@ -17,13 +17,17 @@ namespace RaylibDemo.UI
             new Button("Credits", new Rectangle(300,600,100,60), 40, new Color(0,0,0,255), new Color(50,168,82,255)),
         };
 
+        private HUD headsUpDisplay;
+
         public UIHandler()
         {
+            headsUpDisplay = new HUD();
         }
 
         public void DrawUI()
         {
             RenderButtons();
+            headsUpDisplay.draw();
         }
 
         private void RenderTitle()
