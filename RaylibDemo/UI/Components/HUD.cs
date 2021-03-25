@@ -10,18 +10,19 @@ namespace RaylibDemo.UI.Components
     {
         private HUDElement bottomBar;
 
-        private string HP = "HP:";
         private StatusBar healthBar;
 
-        private string Stamina = "STAMINA:";
         private StatusBar staminaBar;
 
         public HUD()
         {
             bottomBar = new HUDElement(new Rectangle(0, GameData.screenHeight - PercentageH(0.1f), GameData.screenWidth, PercentageH(0.1f)), new Color(0, 58, 88, 255));
+
             healthBar = new StatusBar(new Rectangle(PercentageW(0.1f), GameData.screenHeight - PercentageH(0.065f), 100, PercentageH(0.025f)), new Color(175, 10, 10, 255));
             healthBar.SetStatusString("HP:", 30, PercentageW(0.05f));
-            staminaBar = new StatusBar(new Rectangle(PercentageW(0.25f), GameData.screenHeight - PercentageH(0.065f), 100, PercentageH(0.025f)), new Color(255, 229, 58, 255));
+
+            staminaBar = new StatusBar(new Rectangle(PercentageW(0.34f), GameData.screenHeight - PercentageH(0.065f), 100, PercentageH(0.025f)), new Color(255, 229, 58, 255));
+            staminaBar.SetStatusString("STAMINA:", 30, PercentageW(0.13f));
         }
 
         public override void draw()

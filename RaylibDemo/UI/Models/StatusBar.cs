@@ -1,5 +1,6 @@
 ﻿using Raylib_cs;
 using RaylibDemo.UI.Components;
+using static RaylibDemo.Helper.TextAlignment;
 
 namespace RaylibDemo.UI.Models
 {
@@ -31,7 +32,7 @@ namespace RaylibDemo.UI.Models
             Raylib.DrawRectangleRec(bar, colour);
 
             if (text != null)
-                Raylib.DrawText(text, (int)bar.x - textOffset, (int)bar.y, 24, new Color(255, 255, 255, 255));
+                Raylib.DrawText(text, (int)bar.x - textOffset, MiddleYAlignmentRect(bar, fontSize), fontSize, new Color(255, 255, 255, 255));
         }
     }
 }

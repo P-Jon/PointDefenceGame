@@ -4,13 +4,9 @@ namespace RaylibDemo.Helper
 {
     public class TextAlignment
     {
-        public static int MiddleYAlignmentRect(Rectangle rect, int fontSize, bool isInside = false)
+        public static int MiddleYAlignmentRect(Rectangle rect, int fontSize)
         {
-            // Janky but it'll do
-            if (isInside)
-                return (int)rect.y + (((int)rect.height / 2) - (int)(fontSize * 0.5));
-            else
-                return (int)rect.y + (((int)rect.height / 2));
+            return (int)rect.y + (((int)rect.height / 2) - (int)(fontSize * 0.5));
         }
     }
 }
