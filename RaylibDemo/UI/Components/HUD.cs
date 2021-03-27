@@ -1,10 +1,10 @@
 ﻿using Raylib_cs;
-using RaylibDemo.core.Data;
-using RaylibDemo.UI.Models;
-using System.Collections.Generic;
-using static RaylibDemo.Helper.ScreenCalculator;
+using PointDefence.core.Data;
+using PointDefence.player;
+using PointDefence.UI.Models;
+using static PointDefence.Helper.ScreenCalculator;
 
-namespace RaylibDemo.UI.Components
+namespace PointDefence.UI.Components
 {
     public class HUD : UIComponent
     {
@@ -23,6 +23,12 @@ namespace RaylibDemo.UI.Components
 
             staminaBar = new StatusBar(new Rectangle(PercentageW(0.34f), GameData.screenHeight - PercentageH(0.065f), 100, PercentageH(0.025f)), new Color(255, 229, 58, 255));
             staminaBar.SetStatusString("STAMINA:", 30, PercentageW(0.13f));
+        }
+
+        public override void update()
+        {
+            healthBar.SetStatusValue(PlayerData.health);
+            staminaBar.SetStatusValue(PlayerData.stamina);
         }
 
         public override void draw()

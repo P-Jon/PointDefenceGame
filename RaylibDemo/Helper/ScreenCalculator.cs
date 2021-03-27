@@ -1,6 +1,6 @@
-﻿using RaylibDemo.core.Data;
+﻿using PointDefence.core.Data;
 
-namespace RaylibDemo.Helper
+namespace PointDefence.Helper
 {
     /// <summary>
     /// Intended to get an integer value for a percentage of the screen Height or Width.

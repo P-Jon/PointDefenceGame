@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaylibDemo", "RaylibDemo\RaylibDemo.csproj", "{A59D2E49-F55F-4DCD-9D1F-8D1F3BDEABF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointDefence", "RaylibDemo\PointDefence.csproj", "{A59D2E49-F55F-4DCD-9D1F-8D1F3BDEABF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

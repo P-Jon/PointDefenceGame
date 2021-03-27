@@ -1,6 +1,6 @@
 ﻿using Raylib_cs;
 
-namespace RaylibDemo.Helper
+namespace PointDefence.Helper
 {
     public class TextAlignment
     {

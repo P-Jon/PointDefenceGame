@@ -1,7 +1,7 @@
 ﻿using Raylib_cs;
-using RaylibDemo.UI.Components;
+using PointDefence.UI.Components;
 
-namespace RaylibDemo.UI.Models
+namespace PointDefence.UI.Models
 {
     public class HUDElement : UIComponent
     {
@@ -17,6 +17,11 @@ namespace RaylibDemo.UI.Models
         public override void draw()
         {
             Raylib.DrawRectangleRec(bar, barColour);
+        }
+
+        public override void update()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

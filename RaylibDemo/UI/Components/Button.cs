@@ -1,8 +1,8 @@
 ﻿using Raylib_cs;
-using static RaylibDemo.Helper.TextAlignment;
+using static PointDefence.Helper.TextAlignment;
 using System.Linq;
 
-namespace RaylibDemo.UI.Components
+namespace PointDefence.UI.Components
 {
     public class Button : UIComponent
     {
@@ -52,6 +52,11 @@ namespace RaylibDemo.UI.Components
             Raylib.DrawRectangleRec(buttonBody, buttonColor);
 
             Raylib.DrawText(buttonText, textX, textY, fontSize, textColor);
+        }
+
+        public override void update()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

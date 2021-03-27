@@ -1,23 +1,23 @@
-﻿using RaylibDemo.core.Data;
-using RaylibDemo.UI;
+﻿using PointDefence.core.Data;
+using PointDefence.UI;
 
-using RaylibDemo.player;
+using PointDefence.player;
 using Raylib_cs;
 using static Raylib_cs.Color;
 
-namespace RaylibDemo.core
+namespace PointDefence.core
 {
-    public class GameDemo
+    public class PointDefenceGame
     {
         private PlayerController player;
         private UIHandler _uiHandler = new UIHandler();
 
         private static void Main(string[] args)
         {
-            new GameDemo();
+            new PointDefenceGame();
         }
 
-        public GameDemo()
+        public PointDefenceGame()
         {
             Raylib.InitWindow(GameData.screenWidth, GameData.screenHeight, "DemoGame");
             Raylib.SetTargetFPS(60);
@@ -38,6 +38,7 @@ namespace RaylibDemo.core
         {
             handleMouseInput();
             handleKeyboardInput();
+            _uiHandler.UpdateUI();
         }
 
         private void Draw()

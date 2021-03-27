@@ -1,4 +1,4 @@
-﻿namespace RaylibDemo.core.Data
+﻿namespace PointDefence.core.Data
 {
     public class GameData
     {
