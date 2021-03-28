@@ -1,9 +1,9 @@
-﻿using Raylib_cs;
-using PointDefence.UI.Components;
+﻿using PointDefence.core.Models;
+using Raylib_cs;
 
 namespace PointDefence.UI.Models
 {
-    public class HUDElement : UIComponent
+    public class HUDElement : GameObject
     {
         public Rectangle bar;
         public Color barColour;

@@ -3,10 +3,11 @@ using PointDefence.core.Data;
 using PointDefence.player;
 using PointDefence.UI.Models;
 using static PointDefence.Helper.ScreenCalculator;
+using PointDefence.core.Models;
 
 namespace PointDefence.UI.Components
 {
-    public class HUD : UIComponent
+    public class HUD : GameObject
     {
         private HUDElement bottomBar;
 

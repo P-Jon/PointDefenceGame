@@ -1,11 +1,10 @@
-﻿using Raylib_cs;
-using PointDefence.UI.Components;
-using System;
+﻿using PointDefence.core.Models;
+using Raylib_cs;
 using static PointDefence.Helper.TextAlignment;
 
 namespace PointDefence.UI.Models
 {
-    public class StatusBar : UIComponent
+    public class StatusBar : GameObject
     {
         private Rectangle bar;
         private int statusValue = 50;

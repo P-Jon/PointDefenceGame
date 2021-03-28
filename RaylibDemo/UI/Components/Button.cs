@@ -1,10 +1,11 @@
 ﻿using Raylib_cs;
 using static PointDefence.Helper.TextAlignment;
 using System.Linq;
+using PointDefence.core.Models;
 
 namespace PointDefence.UI.Components
 {
-    public class Button : UIComponent
+    public class Button : GameObject
     {
         private Rectangle buttonBody;
         private Color buttonColor;

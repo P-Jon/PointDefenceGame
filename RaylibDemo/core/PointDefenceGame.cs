@@ -4,12 +4,14 @@ using PointDefence.UI;
 using PointDefence.player;
 using Raylib_cs;
 using static Raylib_cs.Color;
+using PointDefence.enemies;
 
 namespace PointDefence.core
 {
     public class PointDefenceGame
     {
         private PlayerController player;
+        private Missile missile;
         private UIHandler _uiHandler = new UIHandler();
 
         private static void Main(string[] args)
@@ -19,11 +21,11 @@ namespace PointDefence.core
 
         public PointDefenceGame()
         {
-            Raylib.InitWindow(GameData.screenWidth, GameData.screenHeight, "DemoGame");
+            Raylib.InitWindow(GameData.screenWidth, GameData.screenHeight, "Point Defence Game");
             Raylib.SetTargetFPS(60);
 
             player = new PlayerController();
-
+            missile = new Missile();
             while (!Raylib.WindowShouldClose())    // Detect window close button or ESC key
             {
                 Update();
@@ -48,7 +50,7 @@ namespace PointDefence.core
 
             player.DrawPlayer();
             _uiHandler.DrawUI();
-
+            missile.draw();
             Raylib.DrawText("Welcome", 10, 10, 50, MAROON);
 
             Raylib.EndDrawing();
