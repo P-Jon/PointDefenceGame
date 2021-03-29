@@ -1,4 +1,4 @@
-﻿namespace PointDefence.core.Models
+﻿namespace PointDefence.Core.Models
 {
     public abstract class GameObject
     {

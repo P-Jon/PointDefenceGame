@@ -1,12 +1,12 @@
-﻿using PointDefence.core.Data;
+﻿using PointDefence.Core.Data;
 using PointDefence.UI;
 
-using PointDefence.player;
+using PointDefence.Player;
 using Raylib_cs;
 using static Raylib_cs.Color;
-using PointDefence.enemies;
+using PointDefence.Enemies;
 
-namespace PointDefence.core
+namespace PointDefence.Core
 {
     public class PointDefenceGame
     {
@@ -46,7 +46,7 @@ namespace PointDefence.core
         private void Draw()
         {
             Raylib.BeginDrawing();
-            Raylib.ClearBackground(RAYWHITE);
+            Raylib.ClearBackground(BLACK);
 
             player.DrawPlayer();
             _uiHandler.DrawUI();

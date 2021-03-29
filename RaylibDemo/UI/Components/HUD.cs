@@ -1,9 +1,9 @@
 ﻿using Raylib_cs;
-using PointDefence.core.Data;
-using PointDefence.player;
+using PointDefence.Core.Data;
+using PointDefence.Player;
 using PointDefence.UI.Models;
 using static PointDefence.Helper.ScreenCalculator;
-using PointDefence.core.Models;
+using PointDefence.Core.Models;
 
 namespace PointDefence.UI.Components
 {

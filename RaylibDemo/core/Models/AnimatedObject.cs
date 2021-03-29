@@ -1,7 +1,7 @@
 ﻿using Raylib_cs;
 using System.Linq;
 
-namespace PointDefence.core.Models
+namespace PointDefence.Core.Models
 {
     public abstract class AnimatedObject : GameObject
     {

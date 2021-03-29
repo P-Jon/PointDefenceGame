@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace PointDefence.core.Data
+namespace PointDefence.Core.Data
 {
     public class GameData
     {

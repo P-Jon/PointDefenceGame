@@ -1,4 +1,4 @@
-﻿using PointDefence.core.Models;
+﻿using PointDefence.Core.Models;
 using Raylib_cs;
 
 namespace PointDefence.UI.Models

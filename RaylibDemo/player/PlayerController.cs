@@ -1,8 +1,8 @@
-﻿using PointDefence.core.Data;
+﻿using PointDefence.Core.Data;
 using Raylib_cs;
 using static Raylib_cs.Color;
 
-namespace PointDefence.player
+namespace PointDefence.Player
 {
     public class PlayerController
     {

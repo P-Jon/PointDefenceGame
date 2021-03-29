@@ -1,7 +1,7 @@
 ﻿using Raylib_cs;
 using static PointDefence.Helper.TextAlignment;
 using System.Linq;
-using PointDefence.core.Models;
+using PointDefence.Core.Models;
 
 namespace PointDefence.UI.Components
 {

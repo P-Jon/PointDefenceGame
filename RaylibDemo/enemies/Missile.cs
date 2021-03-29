@@ -1,9 +1,9 @@
-﻿using PointDefence.core.Data;
-using PointDefence.core.Models;
+﻿using PointDefence.Core.Data;
+using PointDefence.Core.Models;
 using Raylib_cs;
 using System.Linq;
 
-namespace PointDefence.enemies
+namespace PointDefence.Enemies
 {
     public class Missile : AnimatedObject
     {

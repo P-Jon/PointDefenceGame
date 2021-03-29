@@ -1,4 +1,4 @@
-﻿namespace PointDefence.player
+﻿namespace PointDefence.Player
 {
     public class PlayerData
     {
