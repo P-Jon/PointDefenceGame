@@ -13,6 +13,7 @@ namespace PointDefence.Core
         private PlayerController player;
         private Missile missile;
         private UIHandler _uiHandler = new UIHandler();
+        private GameBackground _gameBackground;
 
         private static void Main(string[] args)
         {
@@ -26,6 +27,7 @@ namespace PointDefence.Core
 
             player = new PlayerController();
             missile = new Missile();
+            _gameBackground = new GameBackground();
             while (!Raylib.WindowShouldClose())    // Detect window close button or ESC key
             {
                 Update();
@@ -47,6 +49,7 @@ namespace PointDefence.Core
         {
             Raylib.BeginDrawing();
             Raylib.ClearBackground(BLACK);
+            _gameBackground.draw();
 
             player.DrawPlayer();
             _uiHandler.DrawUI();
