@@ -17,11 +17,25 @@ namespace PointDefence.Core.Models
             int i = 0;
             foreach (string file in filenames)
             {
-                var image = Raylib.LoadImage(route + file);
+                var image = GetImage(route + file);
                 frames[i] = Raylib.LoadTextureFromImage(image);
                 Raylib.UnloadImage(image);
                 i++;
             }
+        }
+
+        // Just incase...
+        private Image GetImage(string path, bool flipVertical = false, bool flipHorizontal = false)
+        {
+            var image = Raylib.LoadImage(path);
+
+            if (flipVertical)
+                Raylib.ImageFlipVertical(ref image);
+
+            if (flipHorizontal)
+                Raylib.ImageFlipHorizontal(ref image);
+
+            return image;
         }
 
         public void UnloadTextures()

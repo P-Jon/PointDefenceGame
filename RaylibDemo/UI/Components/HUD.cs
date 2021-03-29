@@ -22,8 +22,8 @@ namespace PointDefence.UI.Components
             healthBar = new StatusBar(new Rectangle(PercentageW(0.1f), GameData.screenHeight - PercentageH(0.065f), 100, PercentageH(0.025f)), new Color(175, 10, 10, 255));
             healthBar.SetStatusString("HP:", 30, PercentageW(0.05f));
 
-            staminaBar = new StatusBar(new Rectangle(PercentageW(0.34f), GameData.screenHeight - PercentageH(0.065f), 100, PercentageH(0.025f)), new Color(255, 229, 58, 255));
-            staminaBar.SetStatusString("STAMINA:", 30, PercentageW(0.13f));
+            staminaBar = new StatusBar(new Rectangle(PercentageW(0.32f), GameData.screenHeight - PercentageH(0.065f), 100, PercentageH(0.025f)), new Color(255, 229, 58, 255));
+            staminaBar.SetStatusString("AMMO:", 30, PercentageW(0.1f));
         }
 
         public override void update()

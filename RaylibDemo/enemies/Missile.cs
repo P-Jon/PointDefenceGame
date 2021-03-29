@@ -29,7 +29,7 @@ namespace PointDefence.Enemies
                 time = Raylib.GetTime();
             }
 
-            Raylib.DrawTexture(frames[currentFrame], 400, 400, Color.WHITE);
+            Raylib.DrawTextureEx(frames[currentFrame], new System.Numerics.Vector2(400, 400), 180, 1f, Color.WHITE);
         }
     }
 }
