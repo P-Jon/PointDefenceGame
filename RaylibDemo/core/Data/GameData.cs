@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using PointDefence.Enemies;
+using System.IO;
 
 namespace PointDefence.Core.Data
 {
@@ -8,5 +9,7 @@ namespace PointDefence.Core.Data
         public const int screenHeight = 720;
         public static bool inGameLoop = false;
         public static string localDir = Directory.GetCurrentDirectory() + "/../../../";
+
+        public static EnemySpawnManager EnemyManager = new EnemySpawnManager(30);
     }
 }

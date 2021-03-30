@@ -50,6 +50,7 @@ namespace PointDefence.Core
             handleKeyboardInput();
             _uiHandler.UpdateUI();
             _crosshair.update();
+            missile.update();
         }
 
         private void Draw()
