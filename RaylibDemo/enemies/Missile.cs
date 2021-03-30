@@ -13,17 +13,20 @@ namespace PointDefence.Enemies
         private double time;
 
         private Vector2 target;
-        private Vector2 increments;
+        private float targetXDistance;
+        // private Vector2 increments;
 
         public Missile()
         {
             position = GenerateRandomXY(true);
             target = GenerateRandomXY();
-
+            targetXDistance = -(position.X - target.X);
             CalculateTrajectory();
-
+            Console.WriteLine("---- STARTING VALUES ----");
+            Console.WriteLine("Distance: " + targetXDistance);
             Console.WriteLine("PosX: " + position.X + " PosY: " + position.Y);
             Console.WriteLine("TarX: " + target.X + " TarY: " + target.Y);
+            Console.WriteLine("---- //STARTING VALUES// ----");
 
             GetTexturesFromImages(GameData.localDir + "Images/", "Rocket1.png", "Rocket2.png");
             numberOfFrames = frames.Count() - 1;
@@ -39,29 +42,29 @@ namespace PointDefence.Enemies
 
         private float CalculateAngle()
         {
-            return (float)Math.Tan((position.X + target.X) / target.Y);
+            return (float)Math.Atan(targetXDistance / target.Y);
         }
 
         private float CalculateRotation()
         {
-            return 180 + (CalculateAngle() * 10);
+            return 180 + ((float)Math.Atan(targetXDistance / target.Y));
         }
 
-        private void CalculateTrajectory()
+        private Vector2 CalculateTrajectory()
         {
             var angle = CalculateAngle();
-
-            if (position.X > target.X)
-                target.X = -target.X;
-
-            Console.WriteLine("Angle: " + angle);
-            increments = new Vector2((float)Math.Sin(angle), (float)Math.Cos(angle));
-            Console.WriteLine("PosX: " + position.X + " PosY: " + position.Y);
+            return new Vector2((float)Math.Sin(angle), (float)Math.Cos(angle));
         }
 
         public override void update()
         {
-            position = new Vector2(position.X + increments.X, position.Y + increments.Y);
+            if (!(position.Y >= target.Y))
+            {
+                var increments = CalculateTrajectory();
+                position = new Vector2(position.X + increments.X, position.Y + increments.Y);
+            }
+            else // For Debugging
+                Console.WriteLine("PosX: " + position.X + " PosY: " + position.Y + "\nTarX:" + target.X + " TarY: " + target.Y);
         }
 
         public override void draw()
