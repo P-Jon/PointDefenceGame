@@ -2,7 +2,6 @@
 using PointDefence.Core.Models;
 using Raylib_cs;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 
@@ -14,7 +13,8 @@ namespace PointDefence.Enemies
 
         private Vector2 target;
         private float targetXDistance;
-        // private Vector2 increments;
+        private Vector2 increments;
+        private float rotation;
 
         public Missile()
         {
@@ -22,11 +22,7 @@ namespace PointDefence.Enemies
             target = GenerateRandomXY();
             targetXDistance = -(position.X - target.X);
             CalculateTrajectory();
-            Console.WriteLine("---- STARTING VALUES ----");
-            Console.WriteLine("Distance: " + targetXDistance);
-            Console.WriteLine("PosX: " + position.X + " PosY: " + position.Y);
-            Console.WriteLine("TarX: " + target.X + " TarY: " + target.Y);
-            Console.WriteLine("---- //STARTING VALUES// ----");
+            CalculateRotation();
 
             GetTexturesFromImages(GameData.localDir + "Images/", "Rocket1.png", "Rocket2.png");
             numberOfFrames = frames.Count() - 1;
@@ -45,26 +41,23 @@ namespace PointDefence.Enemies
             return (float)Math.Atan(targetXDistance / target.Y);
         }
 
-        private float CalculateRotation()
+        private void CalculateRotation()
         {
-            return 180 + ((float)Math.Atan(targetXDistance / target.Y));
+            rotation = 90 + (float)(Math.Atan2(target.Y, targetXDistance) * (180 / 3.14f));
         }
 
-        private Vector2 CalculateTrajectory()
+        private void CalculateTrajectory()
         {
             var angle = CalculateAngle();
-            return new Vector2((float)Math.Sin(angle), (float)Math.Cos(angle));
+            increments = new Vector2((float)Math.Sin(angle), (float)Math.Cos(angle));
         }
 
         public override void update()
         {
             if (!(position.Y >= target.Y))
             {
-                var increments = CalculateTrajectory();
                 position = new Vector2(position.X + increments.X, position.Y + increments.Y);
             }
-            else // For Debugging
-                Console.WriteLine("PosX: " + position.X + " PosY: " + position.Y + "\nTarX:" + target.X + " TarY: " + target.Y);
         }
 
         public override void draw()
@@ -75,7 +68,7 @@ namespace PointDefence.Enemies
                 time = Raylib.GetTime();
             }
 
-            Raylib.DrawTextureEx(frames[currentFrame], position, CalculateRotation(), 1f, Color.WHITE);
+            Raylib.DrawTextureEx(frames[currentFrame], position, rotation, 1f, Color.WHITE);
         }
     }
 }
