@@ -15,7 +15,7 @@ namespace PointDefence.Core.Models
             if (isTop)
                 return new Vector2(r.Next(GameData.screenWidth), 0);
             else
-                return new Vector2(r.Next(GameData.screenWidth), GameData.screenHeight - ScreenCalculator.PercentageH(0.1f));
+                return new Vector2(r.Next(GameData.screenWidth), GameData.screenHeight - ScreenCalculator.PercentageH(0.098f));
         }
 
         public abstract void update();

@@ -12,8 +12,9 @@ namespace PointDefence.Core
     public class PointDefenceGame
     {
         private PlayerController player;
-        private Missile missile;
+        //private Missile missile;
         private UIHandler _uiHandler;
+
         private GameBackground _gameBackground;
         private Crosshair _crosshair;
 
@@ -33,7 +34,7 @@ namespace PointDefence.Core
             _crosshair = new Crosshair();
 
             player = new PlayerController();
-            missile = new Missile();
+            //missile = new Missile();
             while (!Raylib.WindowShouldClose())    // Detect window close button or ESC key
             {
                 Update();
@@ -50,7 +51,8 @@ namespace PointDefence.Core
             handleKeyboardInput();
             _uiHandler.UpdateUI();
             _crosshair.update();
-            missile.update();
+            GameData.EnemyManager.update();
+            //missile.update();
         }
 
         private void Draw()
@@ -60,8 +62,10 @@ namespace PointDefence.Core
             _gameBackground.draw();
 
             player.DrawPlayer();
+            //missile.draw();
+            GameData.EnemyManager.draw();
+
             _uiHandler.DrawUI();
-            missile.draw();
             Raylib.DrawText("MISSION: Defend Space Station", 10, 10, 50, MAROON);
             _crosshair.draw();
             Raylib.EndDrawing();

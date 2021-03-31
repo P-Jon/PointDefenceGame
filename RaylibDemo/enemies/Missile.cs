@@ -30,12 +30,6 @@ namespace PointDefence.Enemies
             time = Raylib.GetTime();
         }
 
-        private void RemoveObject()
-        {
-            // Feels hacky, but there should only /ever/ be one of these
-            GameData.EnemyManager.RemoveFromMissileList(this);
-        }
-
         private float CalculateAngle()
         {
             return (float)Math.Atan(targetXDistance / target.Y);
@@ -57,6 +51,11 @@ namespace PointDefence.Enemies
             if (!(position.Y >= target.Y))
             {
                 position = new Vector2(position.X + increments.X, position.Y + increments.Y);
+            }
+            else
+            {
+                // Feels hacky, but there should only /ever/ be one of these
+                GameData.EnemyManager.QueueRemoveFromMissileList(this);
             }
         }
 
