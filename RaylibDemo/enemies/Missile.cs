@@ -1,4 +1,5 @@
-﻿using PointDefence.Core.Data;
+﻿using PointDefence.Assets;
+using PointDefence.Core.Data;
 using PointDefence.Core.Models;
 using Raylib_cs;
 using System;
@@ -54,8 +55,9 @@ namespace PointDefence.Enemies
             }
             else
             {
+                GameData.ExplosionManager.AddExplosionToList(new Explosion(position));
                 // Feels hacky, but there should only /ever/ be one of these
-                GameData.EnemyManager.QueueRemoveFromMissileList(this);
+                GameData.EnemyManager.QueueRemoveFromObjectList(this);
             }
         }
 

@@ -1,17 +1,10 @@
 ﻿using PointDefence.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Raylib_cs;
 
 namespace PointDefence.Enemies
 {
-    public class EnemySpawnManager : GameObject
+    public class EnemySpawnManager : ManagerObject<Missile>
     {
-        public List<Missile> missileList = new List<Missile>();
-
-        private List<Missile> missileDestroyList = new List<Missile>();
-
         private int maxEnemies;
         private double time;
 
@@ -24,8 +17,10 @@ namespace PointDefence.Enemies
         public override void update()
         {
             UpdateMissiles();
+
             InstantiateMissile();
-            RemoveFromMissileList();
+
+            RemoveFromObjectList();
         }
 
         public override void draw()
@@ -35,36 +30,21 @@ namespace PointDefence.Enemies
 
         public void InstantiateMissile()
         {   // This will get progressively harder, but is a good POC for now.
-            if (!(missileList.Count >= maxEnemies) && Raylib.GetTime() >= time + 1.5f)
+            if (!(ObjectList.Count >= maxEnemies) && Raylib.GetTime() >= time + 1.5f)
             {
-                missileList.Add(new Missile());
+                ObjectList.Add(new Missile());
                 time = Raylib.GetTime();
             }
         }
 
         private void UpdateMissiles()
         {
-            missileList.ForEach(x => x.update());
+            ObjectList.ForEach(x => x.update());
         }
 
         private void DrawMissiles()
         {
-            missileList.ForEach(x => x.draw());
-        }
-
-        /// <summary>
-        /// Will Queue Object Removals
-        /// </summary>
-        /// <param name="missile"></param>
-        public void QueueRemoveFromMissileList(Missile missile)
-        {
-            missileDestroyList.Add(missile);
-        }
-
-        private void RemoveFromMissileList()
-        {
-            missileDestroyList.ForEach(x => missileList.Remove(x));
-            missileDestroyList = new List<Missile>();
+            ObjectList.ForEach(x => x.draw());
         }
     }
 }

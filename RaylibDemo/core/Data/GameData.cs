@@ -1,4 +1,6 @@
-﻿using PointDefence.Enemies;
+﻿using PointDefence.Assets;
+using PointDefence.Enemies;
+using System.Collections.Generic;
 using System.IO;
 
 namespace PointDefence.Core.Data
@@ -11,5 +13,6 @@ namespace PointDefence.Core.Data
         public static string localDir = Directory.GetCurrentDirectory() + "/../../../";
 
         public static EnemySpawnManager EnemyManager = new EnemySpawnManager(30);
+        public static ExplosionManager ExplosionManager = new ExplosionManager();
     }
 }

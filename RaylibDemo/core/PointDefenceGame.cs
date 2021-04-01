@@ -52,6 +52,8 @@ namespace PointDefence.Core
             _uiHandler.UpdateUI();
             _crosshair.update();
             GameData.EnemyManager.update();
+            GameData.EnemyManager.update();
+
             //missile.update();
         }
 
@@ -64,6 +66,7 @@ namespace PointDefence.Core
             player.DrawPlayer();
             //missile.draw();
             GameData.EnemyManager.draw();
+            GameData.ExplosionManager.draw();
 
             _uiHandler.DrawUI();
             Raylib.DrawText("MISSION: Defend Space Station", 10, 10, 50, MAROON);
