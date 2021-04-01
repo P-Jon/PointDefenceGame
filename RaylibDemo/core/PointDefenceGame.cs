@@ -36,6 +36,7 @@ namespace PointDefence.Core
             _crosshair = new Crosshair();
 
             player = new PlayerController();
+
             //missile = new Missile();
             while (!Raylib.WindowShouldClose())    // Detect window close button or ESC key
             {
@@ -44,6 +45,7 @@ namespace PointDefence.Core
                 Draw();
             }
 
+            GameData.ImageData.UnloadTextures();
             Raylib.CloseWindow();        // Close window and OpenGL context
         }
 

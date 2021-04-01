@@ -12,7 +12,7 @@ namespace PointDefence.UI.Components
 
         public Crosshair()
         {
-            GetTexturesFromImages(GameData.localDir + "Images/", "Crosshair.png");
+            GetFrames(GameData.ImageData.Crosshair);
         }
 
         public override void update()

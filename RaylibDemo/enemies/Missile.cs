@@ -25,7 +25,7 @@ namespace PointDefence.Enemies
             CalculateTrajectory();
             CalculateRotation();
 
-            GetTexturesFromImages(GameData.localDir + "Images/", "Rocket1.png", "Rocket2.png");
+            GetFrames(GameData.ImageData.MissileFrames);
 
             numberOfFrames = frames.Count() - 1;
             frameTime = 0.2f;
@@ -58,7 +58,6 @@ namespace PointDefence.Enemies
             else
             {
                 // Feels hacky, but there should only /ever/ be one of these
-                UnloadTextures();
                 GameData.ExplosionManager.AddExplosionToList(new Explosion(position));
                 GameData.EnemyManager.QueueRemoveFromObjectList(this);
             }

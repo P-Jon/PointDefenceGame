@@ -14,8 +14,8 @@ namespace PointDefence.Assets
         public Explosion(Vector2 position)
         {
             this.position = position;
-            GetTexturesFromImages(GameData.localDir + "Images/", "Explosion1.png", "Explosion2.png", "Explosion3.png",
-                "Explosion4.png", "Explosion5.png", "Explosion6.png", "Explosion7.png");
+
+            GetFrames(GameData.ImageData.ExplosionFrames);
 
             numberOfFrames = frames.Count() - 1;
             frameTime = 0.1f;
@@ -37,7 +37,6 @@ namespace PointDefence.Assets
         {
             if (Raylib.GetTime() >= startTime + (frameTime * 7))
             {
-                UnloadTextures();
                 GameData.ExplosionManager.QueueRemoveFromObjectList(this);
             }
         }

@@ -14,5 +14,6 @@ namespace PointDefence.Core.Data
 
         public static EnemySpawnManager EnemyManager = new EnemySpawnManager(30);
         public static ExplosionManager ExplosionManager = new ExplosionManager();
+        public static ImageData ImageData = new ImageData();
     }
 }

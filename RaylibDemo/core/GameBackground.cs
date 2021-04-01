@@ -10,7 +10,7 @@ namespace PointDefence.Core
     {
         public GameBackground()
         {
-            GetTexturesFromImages(GameData.localDir + "Images/", "StarrySky.png");
+            GetFrames(GameData.ImageData.StarrySky);
         }
 
         public override void draw()
