@@ -26,7 +26,9 @@ namespace PointDefence.Enemies
             CalculateRotation();
 
             GetTexturesFromImages(GameData.localDir + "Images/", "Rocket1.png", "Rocket2.png");
+
             numberOfFrames = frames.Count() - 1;
+            frameTime = 0.2f;
 
             time = Raylib.GetTime();
         }
@@ -55,15 +57,21 @@ namespace PointDefence.Enemies
             }
             else
             {
-                GameData.ExplosionManager.AddExplosionToList(new Explosion(position));
                 // Feels hacky, but there should only /ever/ be one of these
+
+                GameData.ExplosionManager.AddExplosionToList(new Explosion(position));
                 GameData.EnemyManager.QueueRemoveFromObjectList(this);
             }
         }
 
         public override void draw()
         {
-            if (Raylib.GetTime() >= time + 0.2f)
+            DrawMissile();
+        }
+
+        private void DrawMissile()
+        {
+            if (Raylib.GetTime() >= time + frameTime)
             {
                 ChangeFrame();
                 time = Raylib.GetTime();

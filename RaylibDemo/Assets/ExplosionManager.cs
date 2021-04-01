@@ -12,6 +12,7 @@ namespace PointDefence.Assets
         public override void update()
         {
             ObjectList.ForEach(x => x.update());
+            RemoveFromObjectList();
         }
 
         public override void draw()

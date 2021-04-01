@@ -7,6 +7,8 @@ namespace PointDefence.Core.Models
     {
         protected Texture2D[] frames;
 
+        protected float frameTime;
+
         protected int numberOfFrames;
         protected int currentFrame = 0;
 

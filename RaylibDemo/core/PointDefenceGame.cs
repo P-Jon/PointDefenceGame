@@ -6,6 +6,8 @@ using Raylib_cs;
 using static Raylib_cs.Color;
 using PointDefence.Enemies;
 using PointDefence.UI.Components;
+using System.Numerics;
+using PointDefence.Assets;
 
 namespace PointDefence.Core
 {
@@ -52,7 +54,7 @@ namespace PointDefence.Core
             _uiHandler.UpdateUI();
             _crosshair.update();
             GameData.EnemyManager.update();
-            GameData.EnemyManager.update();
+            GameData.ExplosionManager.update();
 
             //missile.update();
         }
@@ -63,7 +65,7 @@ namespace PointDefence.Core
             Raylib.ClearBackground(BLACK);
             _gameBackground.draw();
 
-            player.DrawPlayer();
+            //player.DrawPlayer();
             //missile.draw();
             GameData.EnemyManager.draw();
             GameData.ExplosionManager.draw();
@@ -78,7 +80,8 @@ namespace PointDefence.Core
         {
             if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
             {
-                player.ChangePosition(Raylib.GetMouseX(), Raylib.GetMouseY());
+                //player.ChangePosition(Raylib.GetMouseX(), Raylib.GetMouseY());
+                GameData.ExplosionManager.AddExplosionToList(new Explosion(Raylib.GetMousePosition()));
             }
         }
 
