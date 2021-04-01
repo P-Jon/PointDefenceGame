@@ -37,6 +37,7 @@ namespace PointDefence.Assets
         {
             if (Raylib.GetTime() >= startTime + (frameTime * 7))
             {
+                UnloadTextures();
                 GameData.ExplosionManager.QueueRemoveFromObjectList(this);
             }
         }

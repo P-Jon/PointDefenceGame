@@ -58,7 +58,7 @@ namespace PointDefence.Enemies
             else
             {
                 // Feels hacky, but there should only /ever/ be one of these
-
+                UnloadTextures();
                 GameData.ExplosionManager.AddExplosionToList(new Explosion(position));
                 GameData.EnemyManager.QueueRemoveFromObjectList(this);
             }
