@@ -1,10 +1,11 @@
 ﻿using PointDefence.Core.Data;
+using PointDefence.Core.Models;
+using PointDefence.Enemies;
 using Raylib_cs;
-using static Raylib_cs.Color;
 
 namespace PointDefence.Player
 {
-    public class PlayerController
+    public class PlayerController : ManagerObject<Missile>
     {
         private int width = 50;
         private int height = 50;
@@ -31,9 +32,14 @@ namespace PointDefence.Player
             posY = y - offsetY;
         }
 
-        public void DrawPlayer()
+        public override void update()
         {
-            Raylib.DrawRectangle(posX, posY, width, height, playerColor);
+            throw new System.NotImplementedException();
+        }
+
+        public override void draw()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
