@@ -1,6 +1,7 @@
 ﻿using PointDefence.Assets;
 using PointDefence.Core.Data;
 using PointDefence.Core.Models;
+using PointDefence.Player;
 using Raylib_cs;
 using System;
 using System.Linq;
@@ -57,6 +58,7 @@ namespace PointDefence.Enemies
             }
             else
             {
+                PlayerData.health -= 2;
                 // Feels hacky, but there should only /ever/ be one of these
                 GameData.ExplosionManager.AddExplosionToList(new Explosion(position));
                 GameData.EnemyManager.QueueRemoveFromObjectList(this);

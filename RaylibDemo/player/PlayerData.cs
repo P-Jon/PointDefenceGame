@@ -2,7 +2,7 @@
 {
     public class PlayerData
     {
-        public static int health = 75;
+        public static int health = 100;
         public static int stamina = 100;
     }
 }
