@@ -1,20 +1,20 @@
 ﻿using PointDefence.Core.Data;
+using Raylib_cs;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Raylib_cs;
 using System.IO;
 
 namespace PointDefence.Audio
 {
     public class AudioManager
     {
-        private string _audioDirectory = GameData.localDir + "Audio/";
+        private string _audioDirectory = GameData.localDir + "Sounds/";
         private Dictionary<string, Sound> _audioDictionary = new Dictionary<string, Sound>();
 
         public AudioManager()
         {
             OpenAudioDevice();
+            LoadSoundsFromDirectory();
         }
 
         private void LoadSoundsFromDirectory()
@@ -29,10 +29,22 @@ namespace PointDefence.Audio
             }
         }
 
-        public void PlaySound(string sound)
+        private Sound GetSound(string sound)
         {
             if (_audioDictionary.ContainsKey(sound))
-                Raylib.PlaySound(_audioDictionary[sound]);
+                return _audioDictionary[sound];
+            else
+                throw new Exception($"Sound: {sound} is not an available sound.");
+        }
+
+        public void PlaySound(string sound)
+        {
+            Raylib.PlaySound(GetSound(sound));
+        }
+
+        public void StopSound(string sound)
+        {
+            Raylib.StopSound(GetSound(sound));
         }
 
         private void OpenAudioDevice()

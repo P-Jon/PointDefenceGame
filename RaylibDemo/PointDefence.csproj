@@ -8,8 +8,4 @@
   <ItemGroup>
     <PackageReference Include="Raylib-cs" Version="3.5.0" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="audio\" />
-  </ItemGroup>
 </Project>

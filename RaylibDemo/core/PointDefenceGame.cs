@@ -84,6 +84,7 @@ namespace PointDefence.Core
             {
                 //player.ChangePosition(Raylib.GetMouseX(), Raylib.GetMouseY());
                 GameData.ExplosionManager.AddExplosionToList(new Explosion(Raylib.GetMousePosition()));
+                GameData.AudioManager.PlaySound("Shooting");
             }
         }
 
