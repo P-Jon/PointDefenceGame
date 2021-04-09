@@ -31,6 +31,7 @@ namespace PointDefence.Core
             _gameBackground = new GameBackground();
             _crosshair = new Crosshair();
 
+            GameData.ImageData.SetWindowIcon();
             player = new PlayerController();
 
             while (!Raylib.WindowShouldClose())    // Detect window close button or ESC key

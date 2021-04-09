@@ -12,18 +12,19 @@ namespace PointDefence.Core.Data
         public Texture2D[] StarrySky;
         public Texture2D[] Crosshair;
 
+        private string ImageDir = GameData.localDir + "Images/";
         // This will have to do until I can resolve a better solution - decent as a POC though.
 
         public ImageData()
         {
-            MissileFrames = GetTexturesFromImages(GameData.localDir + "Images/", "Rocket1.png", "Rocket2.png");
+            MissileFrames = GetTexturesFromImages(ImageDir, "Rocket1.png", "Rocket2.png");
 
-            ExplosionFrames = GetTexturesFromImages(GameData.localDir + "Images/", "Explosion1.png", "Explosion2.png", "Explosion3.png",
+            ExplosionFrames = GetTexturesFromImages(ImageDir, "Explosion1.png", "Explosion2.png", "Explosion3.png",
                 "Explosion4.png", "Explosion5.png", "Explosion6.png", "Explosion7.png");
 
-            StarrySky = GetTexturesFromImages(GameData.localDir + "Images/", "StarrySky.png");
+            StarrySky = GetTexturesFromImages(ImageDir, "StarrySky.png");
 
-            Crosshair = GetTexturesFromImages(GameData.localDir + "Images/", "Crosshair.png");
+            Crosshair = GetTexturesFromImages(ImageDir, "Crosshair.png");
         }
 
         // Taking from CPU/RAM and putting to GPU/VRAM
@@ -40,6 +41,13 @@ namespace PointDefence.Core.Data
             }
 
             return frames;
+        }
+
+        public void SetWindowIcon()
+        {
+            var img = GetImage(ImageDir + "PointDefenceIcon.png");
+            Raylib.SetWindowIcon(img);
+            Raylib.UnloadImage(img);
         }
 
         // Just incase...
