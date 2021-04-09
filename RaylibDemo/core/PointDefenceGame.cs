@@ -23,15 +23,12 @@ namespace PointDefence.Core
 
         public PointDefenceGame()
         {
-            Raylib.InitWindow(GameData.screenWidth, GameData.screenHeight, "Point Defence Game");
-            Raylib.SetTargetFPS(60);
-            Raylib.HideCursor();
+            SetupGame();
 
             _uiHandler = new UIHandler();
             _gameBackground = new GameBackground();
             _crosshair = new Crosshair();
 
-            GameData.ImageData.SetWindowIcon();
             player = new PlayerController();
 
             while (!Raylib.WindowShouldClose())    // Detect window close button or ESC key
@@ -41,6 +38,19 @@ namespace PointDefence.Core
                 Draw();
             }
 
+            QuitGame();
+        }
+
+        private void SetupGame()
+        {
+            Raylib.InitWindow(GameData.screenWidth, GameData.screenHeight, "Point Defence Game");
+            Raylib.SetTargetFPS(60);
+            Raylib.HideCursor();
+            GameData.ImageData.SetWindowIcon();
+        }
+
+        private void QuitGame()
+        {
             GameData.ImageData.UnloadTextures();
             GameData.AudioManager.CloseAudioDevice();
 
