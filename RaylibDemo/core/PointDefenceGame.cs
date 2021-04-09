@@ -1,20 +1,16 @@
-﻿using PointDefence.Core.Data;
-using PointDefence.UI;
-
+﻿using PointDefence.Assets;
+using PointDefence.Core.Data;
 using PointDefence.Player;
+using PointDefence.UI;
+using PointDefence.UI.Components;
 using Raylib_cs;
 using static Raylib_cs.Color;
-using PointDefence.Enemies;
-using PointDefence.UI.Components;
-using System.Numerics;
-using PointDefence.Assets;
 
 namespace PointDefence.Core
 {
     public class PointDefenceGame
     {
         private PlayerController player;
-        //private Missile missile;
         private UIHandler _uiHandler;
 
         private GameBackground _gameBackground;
@@ -37,7 +33,6 @@ namespace PointDefence.Core
 
             player = new PlayerController();
 
-            //missile = new Missile();
             while (!Raylib.WindowShouldClose())    // Detect window close button or ESC key
             {
                 Update();
@@ -46,6 +41,8 @@ namespace PointDefence.Core
             }
 
             GameData.ImageData.UnloadTextures();
+            GameData.AudioManager.CloseAudioDevice();
+
             Raylib.CloseWindow();        // Close window and OpenGL context
         }
 
@@ -57,8 +54,6 @@ namespace PointDefence.Core
             _crosshair.update();
             GameData.EnemyManager.update();
             GameData.ExplosionManager.update();
-
-            //missile.update();
         }
 
         private void Draw()
@@ -67,8 +62,6 @@ namespace PointDefence.Core
             Raylib.ClearBackground(BLACK);
             _gameBackground.draw();
 
-            //player.DrawPlayer();
-            //missile.draw();
             GameData.EnemyManager.draw();
             GameData.ExplosionManager.draw();
 
@@ -84,7 +77,7 @@ namespace PointDefence.Core
             {
                 //player.ChangePosition(Raylib.GetMouseX(), Raylib.GetMouseY());
                 GameData.ExplosionManager.AddExplosionToList(new Explosion(Raylib.GetMousePosition()));
-                GameData.AudioManager.PlaySound("Shooting");
+                GameData.AudioManager.PlaySound("Shooting2");
             }
         }
 

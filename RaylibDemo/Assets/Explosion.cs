@@ -21,6 +21,7 @@ namespace PointDefence.Assets
             frameTime = 0.1f;
             time = Raylib.GetTime();
             startTime = time;
+            GameData.AudioManager.PlaySound("Explosion");
         }
 
         public override void draw()

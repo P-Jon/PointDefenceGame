@@ -15,6 +15,7 @@ namespace PointDefence.Audio
         {
             OpenAudioDevice();
             LoadSoundsFromDirectory();
+            Raylib.SetMasterVolume(0.3f);
         }
 
         private void LoadSoundsFromDirectory()
@@ -47,6 +48,14 @@ namespace PointDefence.Audio
             Raylib.StopSound(GetSound(sound));
         }
 
+        public void UnloadSounds()
+        {
+            foreach (var val in _audioDictionary)
+            {
+                Raylib.UnloadSound(val.Value);
+            }
+        }
+
         private void OpenAudioDevice()
         {
             Raylib.InitAudioDevice();
@@ -54,6 +63,7 @@ namespace PointDefence.Audio
 
         public void CloseAudioDevice()
         {
+            UnloadSounds();
             Raylib.CloseAudioDevice();
         }
     }
