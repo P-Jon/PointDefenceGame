@@ -6,6 +6,7 @@ using Raylib_cs;
 using System;
 using System.Linq;
 using System.Numerics;
+using static PointDefence.Helper.ScreenCalculator;
 
 namespace PointDefence.Enemies
 {
@@ -18,19 +19,35 @@ namespace PointDefence.Enemies
         private Vector2 increments;
         private float rotation;
 
-        public Missile()
+        private bool isAllied;
+
+        public Missile(Vector2 target, bool isAllied = false)
         {
-            position = GenerateRandomXY(true);
-            target = GenerateRandomXY();
-            targetXDistance = -(position.X - target.X);
+            this.isAllied = isAllied;
+
+            if (isAllied)
+            {
+                position = new Vector2(GameData.screenWidth / 2, GameData.screenHeight - PercentageH(0.1f));
+                this.target = target;
+                targetXDistance = (position.X - target.X);
+
+                GetFrames(GameData.ImageData.AlliedMissileFrames);
+            }
+            else
+            {
+                position = GenerateRandomXY(true);
+                this.target = GenerateRandomXY();
+                targetXDistance = -(position.X - target.X);
+
+                GetFrames(GameData.ImageData.EnemyMissileFrames);
+            }
+
             CalculateTrajectory();
             CalculateRotation();
 
-            GetFrames(GameData.ImageData.MissileFrames);
-
             numberOfFrames = frames.Count() - 1;
             frameTime = 0.2f;
-
+            Console.WriteLine(position + " + " + this.target);
             time = Raylib.GetTime();
         }
 
@@ -41,7 +58,10 @@ namespace PointDefence.Enemies
 
         private void CalculateRotation()
         {
-            rotation = 90 + (float)(Math.Atan2(target.Y, targetXDistance) * (180 / 3.14f));
+            if (isAllied)
+                rotation = (float)(Math.Atan2(target.Y, targetXDistance) * (180 / 3.14f));
+            else
+                rotation = 90 + (float)(Math.Atan2(target.Y, targetXDistance) * (180 / 3.14f));
         }
 
         private void CalculateTrajectory()
@@ -52,10 +72,30 @@ namespace PointDefence.Enemies
 
         public override void update()
         {
-            if (!(position.Y >= target.Y))
+            if (isAllied)
+                AlliedMissileHandler();
+            else
+                EnemyMissileHandler();
+        }
+
+        private void AlliedMissileHandler()
+        {
+            if (!(position.Y <= target.Y))
             {
-                position = new Vector2(position.X + increments.X, position.Y + increments.Y);
+                position = new Vector2(position.X - increments.X, position.Y - increments.Y);
             }
+            else
+            {
+                GameData.ExplosionManager.AddExplosionToList(new Explosion(position));
+                GameData.AlliedMissileManager.QueueRemoveFromObjectList(this);
+            }
+        }
+
+        // This is hideous but it will do
+        private void EnemyMissileHandler()
+        {
+            if (!(position.Y >= target.Y))
+                position = new Vector2(position.X + increments.X, position.Y + increments.Y);
             else
             {
                 PlayerData.health -= 2;

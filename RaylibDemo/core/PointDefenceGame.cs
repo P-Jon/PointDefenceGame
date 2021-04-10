@@ -59,10 +59,12 @@ namespace PointDefence.Core
 
         private void Update()
         {
-            handleMouseInput();
-            handleKeyboardInput();
             _uiHandler.UpdateUI();
+
+            player.update();
             _crosshair.update();
+
+            GameData.AlliedMissileManager.update();
             GameData.EnemyManager.update();
             GameData.ExplosionManager.update();
         }
@@ -74,26 +76,16 @@ namespace PointDefence.Core
             _gameBackground.draw();
 
             GameData.EnemyManager.draw();
+            GameData.AlliedMissileManager.draw();
+
             GameData.ExplosionManager.draw();
+
+            player.draw();
 
             _uiHandler.DrawUI();
             Raylib.DrawText("MISSION: Defend Space Station", 10, 10, 50, MAROON);
             _crosshair.draw();
             Raylib.EndDrawing();
-        }
-
-        private void handleMouseInput()
-        {
-            if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
-            {
-                //player.ChangePosition(Raylib.GetMouseX(), Raylib.GetMouseY());
-                GameData.ExplosionManager.AddExplosionToList(new Explosion(Raylib.GetMousePosition()));
-                GameData.AudioManager.PlaySound("Shooting2");
-            }
-        }
-
-        private void handleKeyboardInput()
-        {
         }
     }
 }

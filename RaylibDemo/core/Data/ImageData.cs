@@ -7,8 +7,12 @@ namespace PointDefence.Core.Data
     {
         // Make this a dictionary?
 
-        public Texture2D[] MissileFrames;
+        public Texture2D[] EnemyMissileFrames;
+        public Texture2D[] AlliedMissileFrames;
+
         public Texture2D[] ExplosionFrames;
+        public Texture2D[] CannonFrames;
+
         public Texture2D[] StarrySky;
         public Texture2D[] Crosshair;
 
@@ -17,10 +21,14 @@ namespace PointDefence.Core.Data
 
         public ImageData()
         {
-            MissileFrames = GetTexturesFromImages(ImageDir, "Rocket1.png", "Rocket2.png");
+            EnemyMissileFrames = GetTexturesFromImages(ImageDir, "Rocket1.png", "Rocket2.png");
+
+            AlliedMissileFrames = GetTexturesFromImages(ImageDir, "AlliedRocket1.png", "AlliedRocket2.png");
 
             ExplosionFrames = GetTexturesFromImages(ImageDir, "Explosion1.png", "Explosion2.png", "Explosion3.png",
                 "Explosion4.png", "Explosion5.png", "Explosion6.png", "Explosion7.png");
+
+            CannonFrames = GetTexturesFromImages(ImageDir, "Cannon_Unfired.png", "Cannon_Fired.png");
 
             StarrySky = GetTexturesFromImages(ImageDir, "StarrySky.png");
 
@@ -66,8 +74,10 @@ namespace PointDefence.Core.Data
 
         public void UnloadTextures()
         {
-            UnloadTextures(MissileFrames);
+            UnloadTextures(EnemyMissileFrames);
+            UnloadTextures(AlliedMissileFrames);
             UnloadTextures(ExplosionFrames);
+            UnloadTextures(CannonFrames);
             UnloadTextures(StarrySky);
             UnloadTextures(Crosshair);
         }
