@@ -29,11 +29,6 @@ namespace PointDefence.Player.Models
             Console.WriteLine(increments);
         }
 
-        protected override void CalculateRotation()
-        {
-            rotation = -90 + (float)(Math.Atan2(target.Y, targetXDistance) * (180 / 3.14f));
-        }
-
         public override void update()
         {
             if (!(position.Y <= target.Y))
