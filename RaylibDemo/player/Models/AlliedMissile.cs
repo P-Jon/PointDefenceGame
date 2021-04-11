@@ -3,7 +3,6 @@ using PointDefence.Core.Data;
 using PointDefence.Core.Models;
 using PointDefence.Helper;
 using Raylib_cs;
-using System;
 using System.Linq;
 using System.Numerics;
 
@@ -25,8 +24,6 @@ namespace PointDefence.Player.Models
             numberOfFrames = frames.Count() - 1;
             frameTime = 0.2f;
             time = Raylib.GetTime();
-
-            Console.WriteLine(increments);
         }
 
         public override void update()

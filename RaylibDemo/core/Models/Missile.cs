@@ -1,4 +1,7 @@
-﻿using PointDefence.Player.Models;
+﻿using PointDefence.Assets;
+using PointDefence.Core.Data;
+using PointDefence.Player.Models;
+using Raylib_cs;
 using System;
 using System.Numerics;
 
@@ -34,6 +37,19 @@ namespace PointDefence.Core.Models
         {
             var angle = CalculateAngle();
             increments = new Vector2((float)Math.Sin(angle), (float)Math.Cos(angle));
+        }
+
+        public void CheckCollision(Vector2 circleCenter, int radius)
+        {
+            if (Raylib.CheckCollisionPointCircle(position, circleCenter, radius))
+            {
+                GameData.ExplosionManager.QueueAddExplosionToList(new Explosion(position));
+
+                if (this is AlliedMissile)
+                    GameData.AlliedMissileManager.QueueRemoveFromObjectList(this);
+                else
+                    GameData.EnemyManager.QueueRemoveFromObjectList(this);
+            }
         }
     }
 }

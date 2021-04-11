@@ -1,6 +1,7 @@
 ﻿using PointDefence.Core.Models;
 using PointDefence.Enemies.Models;
 using Raylib_cs;
+using System.Numerics;
 
 namespace PointDefence.Enemies
 {
@@ -46,6 +47,11 @@ namespace PointDefence.Enemies
         private void DrawMissiles()
         {
             ObjectList.ForEach(x => x.draw());
+        }
+
+        public void CheckCollision(Vector2 circleCenter, int radius)
+        {
+            ObjectList.ForEach(x => x.CheckCollision(circleCenter, radius));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using PointDefence.Core.Data;
 using PointDefence.Core.Models;
 using Raylib_cs;
+using System;
 using System.Linq;
 using System.Numerics;
 
@@ -10,6 +11,8 @@ namespace PointDefence.Assets
     {
         private double startTime;
         private double time;
+
+        private int radius = 32;
 
         public Explosion(Vector2 position)
         {
@@ -31,13 +34,18 @@ namespace PointDefence.Assets
                 ChangeFrame();
                 time = Raylib.GetTime();
             }
-            Raylib.DrawTextureEx(frames[currentFrame], new Vector2(position.X - 128, position.Y - 128), 0, 1f, Color.WHITE);
+
+            Raylib.DrawCircle((int)position.X, (int)position.Y, radius, new Color(255, 0, 0, 128));
+            //Raylib.DrawTextureEx(frames[currentFrame], new Vector2(position.X - 128, position.Y - 128), 0, 1f, Color.WHITE);
         }
 
         public override void update()
         {
+            radius += 2;
+            GameData.EnemyManager.CheckCollision(position, radius);
             if (Raylib.GetTime() >= startTime + (frameTime * 7))
             {
+                Console.WriteLine(radius);
                 GameData.ExplosionManager.QueueRemoveFromObjectList(this);
             }
         }

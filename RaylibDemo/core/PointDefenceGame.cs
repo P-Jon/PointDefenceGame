@@ -1,5 +1,4 @@
-﻿using PointDefence.Assets;
-using PointDefence.Core.Data;
+﻿using PointDefence.Core.Data;
 using PointDefence.Player;
 using PointDefence.UI;
 using PointDefence.UI.Components;
