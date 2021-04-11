@@ -30,7 +30,7 @@ namespace PointDefence.Player.Models
         {
             if (!(position.Y <= target.Y))
             {
-                position = new Vector2(position.X - increments.X, position.Y - increments.Y);
+                position = new Vector2(position.X - (increments.X * 2), position.Y - (increments.Y * 2));
             }
             else
             {
