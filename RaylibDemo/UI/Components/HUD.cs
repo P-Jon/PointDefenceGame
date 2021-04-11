@@ -29,7 +29,7 @@ namespace PointDefence.UI.Components
         public override void update()
         {
             healthBar.SetStatusValue(PlayerData.health);
-            staminaBar.SetStatusValue(PlayerData.stamina);
+            staminaBar.SetStatusValue(PlayerData.ammo);
         }
 
         public override void draw()

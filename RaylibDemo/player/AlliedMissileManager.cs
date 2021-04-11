@@ -1,6 +1,5 @@
 ﻿using PointDefence.Core.Models;
-using PointDefence.Enemies;
-using System;
+using PointDefence.Player.Models;
 using System.Numerics;
 
 namespace PointDefence.Player
@@ -24,7 +23,7 @@ namespace PointDefence.Player
 
         public void InstantiateMissile(Vector2 pointedPosition)
         {
-            ObjectList.Add(new Missile(pointedPosition, true));
+            ObjectList.Add(new AlliedMissile(pointedPosition));
         }
 
         private void UpdateMissiles()

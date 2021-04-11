@@ -1,6 +1,6 @@
 ﻿using PointDefence.Core.Models;
+using PointDefence.Enemies.Models;
 using Raylib_cs;
-using System.Numerics;
 
 namespace PointDefence.Enemies
 {
@@ -33,7 +33,7 @@ namespace PointDefence.Enemies
         {   // This will get progressively harder, but is a good POC for now.
             if (!(ObjectList.Count >= maxEnemies) && Raylib.GetTime() >= time + 1.5f)
             {
-                ObjectList.Add(new Missile(default(Vector2), false));
+                ObjectList.Add(new EnemyMissile());
                 time = Raylib.GetTime();
             }
         }

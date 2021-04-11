@@ -32,6 +32,7 @@ namespace PointDefence.Player
             {
                 //player.ChangePosition(Raylib.GetMouseX(), Raylib.GetMouseY());
                 //GameData.ExplosionManager.AddExplosionToList(new Explosion(Raylib.GetMousePosition()));
+                PlayerData.ammo -= 5;
                 GameData.AlliedMissileManager.InstantiateMissile(Raylib.GetMousePosition());
                 GameData.AudioManager.PlaySound("Shooting2");
             }
