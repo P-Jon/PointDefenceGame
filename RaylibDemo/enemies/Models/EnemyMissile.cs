@@ -4,10 +4,8 @@ using PointDefence.Core.Models;
 using PointDefence.Player;
 using Raylib_cs;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using System.Text;
 
 namespace PointDefence.Enemies.Models
 {
@@ -18,6 +16,7 @@ namespace PointDefence.Enemies.Models
             position = GenerateRandomXY(true);
             this.target = GenerateRandomXY();
             targetXDistance = -(position.X - target.X);
+            targetYDistance = target.Y;
 
             GetFrames(GameData.ImageData.EnemyMissileFrames);
 

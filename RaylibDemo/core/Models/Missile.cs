@@ -8,13 +8,15 @@ namespace PointDefence.Core.Models
         protected double time;
 
         protected Vector2 target;
+
+        protected float targetYDistance;
         protected float targetXDistance;
         protected Vector2 increments;
         protected float rotation;
 
         protected float CalculateAngle()
         {
-            return (float)Math.Atan(targetXDistance / target.Y);
+            return (float)Math.Atan(targetXDistance / targetYDistance);
         }
 
         protected abstract void CalculateRotation();

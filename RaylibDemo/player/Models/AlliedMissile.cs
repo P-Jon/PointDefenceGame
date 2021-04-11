@@ -16,7 +16,7 @@ namespace PointDefence.Player.Models
             position = new Vector2(GameData.screenWidth / 2, GameData.screenHeight - ScreenCalculator.PercentageH(0.1f));
             this.target = target;
             targetXDistance = (position.X - target.X);
-
+            targetYDistance = (position.Y - target.Y);
             GetFrames(GameData.ImageData.AlliedMissileFrames);
 
             CalculateTrajectory();
@@ -25,6 +25,8 @@ namespace PointDefence.Player.Models
             numberOfFrames = frames.Count() - 1;
             frameTime = 0.2f;
             time = Raylib.GetTime();
+
+            Console.WriteLine(increments);
         }
 
         protected override void CalculateRotation()
