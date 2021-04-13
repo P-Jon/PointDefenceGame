@@ -27,6 +27,13 @@ namespace PointDefence.Player
             handleMouseInput();
             handleKeyboardInput();
 
+            // Double checking
+            if (PlayerData.ammo <= 0)
+            {
+                reloading = true;
+                GameData.AudioManager.PlaySound("Reloading");
+            }
+
             if (reloading)
                 Reload();
         }
@@ -51,6 +58,8 @@ namespace PointDefence.Player
             if (reloading != true && Raylib.IsKeyPressed(KeybindData.ReloadKey))
             {
                 time = Raylib.GetTime();
+                GameData.AudioManager.PlaySound("Reloading");
+
                 reloading = true;
             }
         }
@@ -65,6 +74,7 @@ namespace PointDefence.Player
             }
             else if (PlayerData.ammo >= 100)
             {
+                GameData.AudioManager.StopSound("Reloading");
                 GameData.AudioManager.PlaySound("Reloaded");
                 reloading = false;
             }
