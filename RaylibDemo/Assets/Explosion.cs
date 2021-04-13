@@ -45,7 +45,7 @@ namespace PointDefence.Assets
             GameData.EnemyManager.CheckCollision(position, radius);
             if (Raylib.GetTime() >= startTime + (frameTime * 7))
             {
-                Console.WriteLine(radius);
+                //Console.WriteLine(radius);
                 GameData.ExplosionManager.QueueRemoveFromObjectList(this);
             }
         }
