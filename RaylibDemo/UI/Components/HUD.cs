@@ -37,6 +37,7 @@ namespace PointDefence.UI.Components
             bottomBar.draw();
             healthBar.draw();
             staminaBar.draw();
+            Raylib.DrawText($"Score: {PlayerData.score}", PercentageW(0.77f), GameData.screenHeight - PercentageH(0.072f), 32, Color.WHITE);
         }
     }
 }

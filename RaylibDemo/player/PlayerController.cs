@@ -1,10 +1,8 @@
-﻿using PointDefence.Assets;
-using PointDefence.Core.Data;
+﻿using PointDefence.Core.Data;
 using PointDefence.Core.Models;
+using Raylib_cs;
 using System.Numerics;
 using static PointDefence.Helper.ScreenCalculator;
-using Raylib_cs;
-using System;
 
 namespace PointDefence.Player
 {

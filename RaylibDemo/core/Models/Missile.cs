@@ -1,5 +1,6 @@
 ﻿using PointDefence.Assets;
 using PointDefence.Core.Data;
+using PointDefence.Player;
 using PointDefence.Player.Models;
 using Raylib_cs;
 using System;
@@ -48,7 +49,10 @@ namespace PointDefence.Core.Models
                 if (this is AlliedMissile)
                     GameData.AlliedMissileManager.QueueRemoveFromObjectList(this);
                 else
+                {
                     GameData.EnemyManager.QueueRemoveFromObjectList(this);
+                    PlayerData.score += 10;
+                }
             }
         }
     }
