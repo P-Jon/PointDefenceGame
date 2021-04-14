@@ -15,45 +15,39 @@ namespace PointDefence.Core
         private GameBackground _gameBackground;
         private Crosshair _crosshair;
 
-        private static void Main(string[] args)
-        {
-            new PointDefenceGame();
-        }
-
         public PointDefenceGame()
         {
-            SetupGame();
-
             _uiHandler = new UIHandler();
             _gameBackground = new GameBackground();
             _crosshair = new Crosshair();
 
             player = new PlayerController();
 
+            GameLoop();
+
+            QuitGame(true);
+        }
+
+        private void GameLoop()
+        {
             while (!Raylib.WindowShouldClose())    // Detect window close button or ESC key
             {
-                Update();
+                if (!GameData.Gameover)
+                    Update();
+                else
+                    player.update(); // Get input
 
                 Draw();
             }
-
-            QuitGame();
         }
 
-        private void SetupGame()
-        {
-            Raylib.InitWindow(GameData.screenWidth, GameData.screenHeight, "Point Defence Game");
-            Raylib.SetTargetFPS(60);
-            Raylib.HideCursor();
-            GameData.ImageData.SetWindowIcon();
-        }
-
-        private void QuitGame()
+        private void QuitGame(bool quit)
         {
             GameData.ImageData.UnloadTextures();
             GameData.AudioManager.CloseAudioDevice();
 
-            Raylib.CloseWindow();        // Close window and OpenGL context
+            if (quit)
+                Raylib.CloseWindow();        // Close window and OpenGL context
         }
 
         private void Update()

@@ -1,6 +1,4 @@
-﻿using Raylib_cs;
-
-namespace PointDefence.Player
+﻿namespace PointDefence.Player
 {
     public class PlayerData
     {
