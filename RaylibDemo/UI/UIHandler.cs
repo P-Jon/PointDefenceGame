@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Raylib_cs;
-using static Raylib_cs.Color;
+﻿using PointDefence.Core.Data;
 using PointDefence.UI.Components;
-using PointDefence.Core.Data;
+using Raylib_cs;
+using System.Collections.Generic;
 
 namespace PointDefence.UI
 {
@@ -34,7 +31,16 @@ namespace PointDefence.UI
             if (GameData.inGameLoop)
                 RenderTitleScreen();
 
+            if (GameData.Gameover)
+                DisplayGameover();
+
             headsUpDisplay.draw();
+        }
+
+        private void DisplayGameover()
+        {
+            var halfTextMeasure = (Raylib.MeasureText("Game Over", 64) / 2);
+            Raylib.DrawText("Game Over", (GameData.screenWidth / 2) - halfTextMeasure, (GameData.screenHeight / 2) - halfTextMeasure, 64, Color.WHITE);
         }
 
         private void RenderTitleScreen()

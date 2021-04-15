@@ -32,6 +32,9 @@ namespace PointDefence.Core
         {
             while (!Raylib.WindowShouldClose())    // Detect window close button or ESC key
             {
+                if (PlayerData.health <= 0)
+                    GameData.Gameover = true;
+
                 if (!GameData.Gameover)
                     Update();
                 else
