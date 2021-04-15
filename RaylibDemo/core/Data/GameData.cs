@@ -8,11 +8,12 @@ namespace PointDefence.Core.Data
 {
     public class GameData
     {
-        public const int screenWidth = 1280;
-        public const int screenHeight = 720;
-        public static bool inGameLoop = false;
-        public static bool Gameover = false;
+        public const int ScreenWidth = 1280;
+        public const int ScreenHeight = 720;
 
+        public static bool InGameLoop = false;
+        public static bool Gameover = false;
+        public static bool QuitGame = false;
         public static string localDir = Directory.GetCurrentDirectory() + "/../../../";
 
         public static EnemySpawnManager EnemyManager = new EnemySpawnManager(30);

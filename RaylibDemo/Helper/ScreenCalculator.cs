@@ -14,7 +14,7 @@ namespace PointDefence.Helper
         /// <returns>Returns integer value of the height * value</returns>
         public static int PercentageH(float value)
         {
-            return Percentage(GameData.screenHeight, value);
+            return Percentage(GameData.ScreenHeight, value);
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace PointDefence.Helper
         /// <returns>Returns integer value of the width * value</returns>
         public static int PercentageW(float value)
         {
-            return Percentage(GameData.screenWidth, value);
+            return Percentage(GameData.ScreenWidth, value);
         }
 
         private static int Percentage(int hw, float value)

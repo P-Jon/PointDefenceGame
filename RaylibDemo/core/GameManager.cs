@@ -17,11 +17,13 @@ namespace PointDefence.Core
             SetupGameWindow();
 
             GameLoop = new PointDefenceGame();
+
+            if ()
         }
 
         private void SetupGameWindow()
         {
-            Raylib.InitWindow(GameData.screenWidth, GameData.screenHeight, "Point Defence Game");
+            Raylib.InitWindow(GameData.ScreenWidth, GameData.ScreenHeight, "Point Defence Game");
             Raylib.SetTargetFPS(60);
             Raylib.HideCursor();
             GameData.ImageData.SetWindowIcon();

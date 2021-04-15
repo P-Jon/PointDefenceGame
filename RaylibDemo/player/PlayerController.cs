@@ -13,7 +13,7 @@ namespace PointDefence.Player
 
         public PlayerController()
         {
-            position = new Vector2((GameData.screenWidth / 2), GameData.screenHeight - PercentageH(0.1f));
+            position = new Vector2((GameData.ScreenWidth / 2), GameData.ScreenHeight - PercentageH(0.1f));
 
             GetFrames(GameData.ImageData.CannonFrames);
 

@@ -28,7 +28,7 @@ namespace PointDefence.UI
 
         public void DrawUI()
         {
-            if (GameData.inGameLoop)
+            if (GameData.InGameLoop)
                 RenderTitleScreen();
 
             if (GameData.Gameover)
@@ -40,7 +40,7 @@ namespace PointDefence.UI
         private void DisplayGameover()
         {
             var halfTextMeasure = (Raylib.MeasureText("Game Over", 64) / 2);
-            Raylib.DrawText("Game Over", (GameData.screenWidth / 2) - halfTextMeasure, (GameData.screenHeight / 2) - halfTextMeasure, 64, Color.WHITE);
+            Raylib.DrawText("Game Over", (GameData.ScreenWidth / 2) - halfTextMeasure, (GameData.ScreenHeight / 2) - halfTextMeasure, 64, Color.WHITE);
         }
 
         private void RenderTitleScreen()

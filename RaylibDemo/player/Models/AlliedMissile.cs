@@ -12,7 +12,7 @@ namespace PointDefence.Player.Models
     {
         public AlliedMissile(Vector2 target)
         {
-            position = new Vector2(GameData.screenWidth / 2, GameData.screenHeight - ScreenCalculator.PercentageH(0.1f));
+            position = new Vector2(GameData.ScreenWidth / 2, GameData.ScreenHeight - ScreenCalculator.PercentageH(0.1f));
             this.target = target;
             targetXDistance = (position.X - target.X);
             targetYDistance = (position.Y - target.Y);
