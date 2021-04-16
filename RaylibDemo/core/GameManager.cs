@@ -1,5 +1,6 @@
 ﻿using PointDefence.Core.Data;
 using Raylib_cs;
+using System;
 
 namespace PointDefence.Core
 {
@@ -16,9 +17,21 @@ namespace PointDefence.Core
         {
             SetupGameWindow();
 
-            GameLoop = new PointDefenceGame();
+            while (GameData.QuitGame == false)
+            {
+                GameLoop = new PointDefenceGame();
+                QuitGame();
+                Console.WriteLine("Attemtping Restart... \n QuitGame: " + GameData.QuitGame);
+            }
+        }
 
-            if ()
+        private void QuitGame()
+        {
+            GameData.ImageData.UnloadTextures();
+            GameData.AudioManager.CloseAudioDevice();
+
+            if (GameData.QuitGame)
+                Raylib.CloseWindow();        // Close window and OpenGL context
         }
 
         private void SetupGameWindow()

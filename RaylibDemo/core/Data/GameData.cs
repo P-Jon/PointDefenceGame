@@ -14,6 +14,7 @@ namespace PointDefence.Core.Data
         public static bool InGameLoop = false;
         public static bool Gameover = false;
         public static bool QuitGame = false;
+
         public static string localDir = Directory.GetCurrentDirectory() + "/../../../";
 
         public static EnemySpawnManager EnemyManager = new EnemySpawnManager(30);

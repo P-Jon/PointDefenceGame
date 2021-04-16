@@ -33,7 +33,7 @@ namespace PointDefence.Enemies.Models
                 position = new Vector2(position.X + increments.X, position.Y + increments.Y);
             else
             {
-                PlayerData.health -= 2;
+                PlayerData.health -= 50;
                 // Feels hacky, but there should only /ever/ be one of these
                 GameData.ExplosionManager.AddExplosionToList(new Explosion(position));
                 GameData.EnemyManager.QueueRemoveFromObjectList(this);

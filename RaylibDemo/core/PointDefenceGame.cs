@@ -3,6 +3,7 @@ using PointDefence.Player;
 using PointDefence.UI;
 using PointDefence.UI.Components;
 using Raylib_cs;
+using System;
 using static Raylib_cs.Color;
 
 namespace PointDefence.Core
@@ -15,6 +16,8 @@ namespace PointDefence.Core
         private GameBackground _gameBackground;
         private Crosshair _crosshair;
 
+        private bool Restart = false;
+
         public PointDefenceGame()
         {
             _uiHandler = new UIHandler();
@@ -25,32 +28,61 @@ namespace PointDefence.Core
 
             GameLoop();
 
-            QuitGame(true);
+            GameData.QuitGame = !Restart;
         }
 
         private void GameLoop()
         {
             while (!Raylib.WindowShouldClose())    // Detect window close button or ESC key
             {
-                if (PlayerData.health <= 0)
-                    GameData.Gameover = true;
+                if (Raylib.IsWindowFocused())
+                {
+                    CheckGameover();
 
-                if (!GameData.Gameover)
-                    Update();
+                    if (!GameData.Gameover)
+                    {
+                        Update();
+                        Draw();
+                    }
+                    else if (CheckRestart())
+                        break;
+                    else
+                        PollInput();
+                }
                 else
-                    player.update(); // Get input
-
-                Draw();
+                    PollInput();
             }
         }
 
-        private void QuitGame(bool quit)
+        // This HAS to be used to enable input to be grabbed
+        private void PollInput()
         {
-            GameData.ImageData.UnloadTextures();
-            GameData.AudioManager.CloseAudioDevice();
+            Raylib.BeginDrawing();
+            Raylib.EndDrawing();
+        }
 
-            if (quit)
-                Raylib.CloseWindow();        // Close window and OpenGL context
+        private void CheckGameover()
+        {
+            if (!GameData.Gameover && PlayerData.health <= 0)
+            {
+                GameData.Gameover = true;
+                GameData.AudioManager.PlaySound("Gameover2");
+
+                Update();
+                DrawUI(true);
+            }
+        }
+
+        private bool CheckRestart()
+        {
+            if (GameData.Gameover && Raylib.IsKeyPressed(KeybindData.RestartKey))
+            {
+                Restart = true;
+                return true;
+            }
+            DrawUI(true);
+
+            return false;
         }
 
         private void Update()
@@ -78,10 +110,22 @@ namespace PointDefence.Core
 
             player.draw();
 
+            DrawUI();
+            _crosshair.draw();
+
+            Raylib.EndDrawing();
+        }
+
+        private void DrawUI(bool drawCall = false)
+        {
+            if (drawCall)
+                Raylib.BeginDrawing();
+
             _uiHandler.DrawUI();
             Raylib.DrawText("MISSION: Defend Space Station", 10, 10, 50, MAROON);
-            _crosshair.draw();
-            Raylib.EndDrawing();
+
+            if (drawCall)
+                Raylib.EndDrawing();
         }
     }
 }
