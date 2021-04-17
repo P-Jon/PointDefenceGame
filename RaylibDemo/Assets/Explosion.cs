@@ -41,7 +41,8 @@ namespace PointDefence.Assets
 
         public override void update()
         {
-            radius += 2;
+            if (!(radius >= 200))
+                radius += 2;
             GameData.EnemyManager.CheckCollision(position, radius);
             if (Raylib.GetTime() >= startTime + (frameTime * 7))
             {

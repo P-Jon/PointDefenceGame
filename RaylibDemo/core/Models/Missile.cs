@@ -50,10 +50,19 @@ namespace PointDefence.Core.Models
                     GameData.AlliedMissileManager.QueueRemoveFromObjectList(this);
                 else
                 {
+                    CheckBaseHit();
+
                     GameData.EnemyManager.QueueRemoveFromObjectList(this);
                     PlayerData.score += 10;
                 }
             }
+        }
+
+        // Hacky hardcode will bite me somewhere I reckon
+        public void CheckBaseHit()
+        {
+            if (position.Y + 200 >= target.Y)
+                PlayerData.health -= 10;
         }
     }
 }
