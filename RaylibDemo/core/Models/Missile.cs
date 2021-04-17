@@ -50,7 +50,7 @@ namespace PointDefence.Core.Models
                     GameData.AlliedMissileManager.QueueRemoveFromObjectList(this);
                 else
                 {
-                    CheckBaseHit();
+                    CheckBaseHit(radius);
 
                     GameData.EnemyManager.QueueRemoveFromObjectList(this);
                     PlayerData.score += 10;
@@ -58,8 +58,8 @@ namespace PointDefence.Core.Models
             }
         }
 
-        // Hacky hardcode will bite me somewhere I reckon
-        public void CheckBaseHit()
+        // Hacky hardcode will bite me somewhere I reckon, will change when I figure out how to make it consistent
+        public void CheckBaseHit(int radius)
         {
             if (position.Y + 200 >= target.Y)
                 PlayerData.health -= 10;
