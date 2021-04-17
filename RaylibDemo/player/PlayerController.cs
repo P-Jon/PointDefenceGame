@@ -72,6 +72,8 @@ namespace PointDefence.Player
             }
             else if (PlayerData.ammo >= 100)
             {
+                PlayerData.score = PlayerData.score - 20 <= 0 ? 0 : PlayerData.score - 20;
+
                 GameData.AudioManager.StopSound("Reloading");
                 GameData.AudioManager.PlaySound("Reloaded");
                 reloading = false;
