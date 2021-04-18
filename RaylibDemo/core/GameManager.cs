@@ -27,11 +27,15 @@ namespace PointDefence.Core
 
         private void QuitGame()
         {
-            GameData.ImageData.UnloadTextures();
-            GameData.AudioManager.CloseAudioDevice();
+            GameData.ResetData();
 
             if (GameData.QuitGame)
+            {
+                GameData.ImageData.UnloadTextures();
+                GameData.AudioManager.CloseAudioDevice();
+
                 Raylib.CloseWindow();        // Close window and OpenGL context
+            }
         }
 
         private void SetupGameWindow()
