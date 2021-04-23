@@ -62,13 +62,18 @@ namespace PointDefence.Core
 
         private void CheckGameover()
         {
-            if (!GameData.Gameover && PlayerData.health <= 0)
+            if ((!GameData.Gameover && PlayerData.health <= 0) || (GameData.DebugMode && Raylib.IsKeyPressed(KeyboardKey.KEY_DELETE)))
             {
                 GameData.Gameover = true;
                 GameData.AudioManager.PlaySound("Gameover2");
 
                 Update();
-                DrawUI(true);
+
+                // Beyond hacky, without this raylib will have a flickering effect when it is polling
+                // for input. I assume this is because Raylib is swapping the front and back buffers,
+                // which are not the same - so calling draw twice stops this.
+                Draw();
+                Draw();
             }
         }
 

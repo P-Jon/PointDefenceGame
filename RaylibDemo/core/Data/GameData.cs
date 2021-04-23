@@ -8,6 +8,8 @@ namespace PointDefence.Core.Data
 {
     public class GameData
     {
+        public const bool DebugMode = true;
+
         public const int ScreenWidth = 1280;
         public const int ScreenHeight = 720;
 
