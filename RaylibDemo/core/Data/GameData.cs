@@ -23,5 +23,18 @@ namespace PointDefence.Core.Data
         public static ExplosionManager ExplosionManager = new ExplosionManager();
         public static ImageData ImageData = new ImageData();
         public static AudioManager AudioManager = new AudioManager();
+
+        public static void ResetData()
+        {
+            InGameLoop = false;
+            Gameover = false;
+            // QuitGame = false; If we do this here, the outer logic fails.
+
+            EnemyManager = new EnemySpawnManager(30);
+            AlliedMissileManager = new AlliedMissileManager();
+            ExplosionManager = new ExplosionManager();
+            // ImageData = new ImageData(); Bit pointless doing this
+            // AudioManager = new AudioManager(); This too
+        }
     }
 }
