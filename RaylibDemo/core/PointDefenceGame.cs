@@ -27,7 +27,6 @@ namespace PointDefence.Core
             player = new PlayerController();
 
             GameLoop();
-
             GameData.QuitGame = !Restart;
         }
 

@@ -1,4 +1,5 @@
 ﻿using PointDefence.Core.Data;
+using PointDefence.Player;
 using Raylib_cs;
 using System;
 
@@ -20,14 +21,15 @@ namespace PointDefence.Core
             while (GameData.QuitGame == false)
             {
                 GameLoop = new PointDefenceGame();
+
                 QuitGame();
-                Console.WriteLine("Attemtping Restart... \n QuitGame: " + GameData.QuitGame);
             }
         }
 
         private void QuitGame()
         {
             GameData.ResetData();
+            PlayerData.ResetStats();
 
             if (GameData.QuitGame)
             {

@@ -28,7 +28,7 @@ namespace PointDefence.Core.Data
         {
             InGameLoop = false;
             Gameover = false;
-            QuitGame = false;
+            // QuitGame = false; If we do this here, the outer logic fails.
 
             EnemyManager = new EnemySpawnManager(30);
             AlliedMissileManager = new AlliedMissileManager();
