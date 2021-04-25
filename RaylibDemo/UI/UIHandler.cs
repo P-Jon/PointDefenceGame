@@ -28,13 +28,31 @@ namespace PointDefence.UI
 
         public void DrawUI()
         {
-            if (GameData.InGameLoop)
-                RenderTitleScreen();
+            if (!GameData.InGameLoop)
+                DisplayOpenScreen();
+            //RenderTitleScreen();
 
             if (GameData.Gameover)
                 DisplayGameover();
 
             headsUpDisplay.draw();
+        }
+
+        private void DisplayOpenScreen()
+        {
+            var textSize = Raylib.MeasureText("Press Enter Key to Start", 32);
+
+            Raylib.DrawText("Controls:", (GameData.ScreenWidth / 2) - (Raylib.MeasureText("Controls:", 64) / 2),
+                (GameData.ScreenHeight / 2) - (textSize / 2), 64, Color.WHITE);
+
+            Raylib.DrawText("Esc to Exit", (GameData.ScreenWidth / 2) - (Raylib.MeasureText("Esc to Exit", 32) / 2),
+                (GameData.ScreenHeight / 2) - (textSize / 5), 32, Color.WHITE);
+
+            Raylib.DrawText("R to Reload Weapon", (GameData.ScreenWidth / 2) - (Raylib.MeasureText("R to Reload Weapon", 32) / 2),
+                (GameData.ScreenHeight / 2) - (textSize / 10), 32, Color.WHITE);
+
+            Raylib.DrawText("Press Enter Key to Start", (GameData.ScreenWidth / 2) - (Raylib.MeasureText("Press Any Key to Start", 40) / 2),
+                            (GameData.ScreenHeight / 2) + (textSize / 10), 40, Color.WHITE);
         }
 
         private void DisplayGameover()

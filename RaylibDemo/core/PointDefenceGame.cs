@@ -36,6 +36,15 @@ namespace PointDefence.Core
             {
                 if (Raylib.IsWindowFocused())
                 {
+                    if (!GameData.InGameLoop)
+                    {
+                        Draw();
+                        if (Raylib.IsKeyPressed(KeybindData.StartKey))
+                            GameData.InGameLoop = true;
+                        else
+                            continue;
+                    }
+
                     CheckGameover();
 
                     if (!GameData.Gameover)

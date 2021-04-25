@@ -28,7 +28,7 @@ namespace PointDefence.Core.Data
 
         public static void ResetData()
         {
-            InGameLoop = false;
+            //InGameLoop = false;
             Gameover = false;
             // QuitGame = false; If we do this here, the outer logic fails.
 
