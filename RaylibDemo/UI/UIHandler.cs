@@ -41,6 +41,7 @@ namespace PointDefence.UI
         {
             var halfTextMeasure = (Raylib.MeasureText("Game Over", 64) / 2);
             Raylib.DrawText("Game Over", (GameData.ScreenWidth / 2) - halfTextMeasure, (GameData.ScreenHeight / 2) - halfTextMeasure, 64, Color.WHITE);
+            Raylib.DrawText("Press Spacebar to Restart", (GameData.ScreenWidth / 2) - (Raylib.MeasureText("Press Spacebar to Restart", 32) / 2), (GameData.ScreenHeight / 2), 32, Color.WHITE);
         }
 
         private void RenderTitleScreen()
