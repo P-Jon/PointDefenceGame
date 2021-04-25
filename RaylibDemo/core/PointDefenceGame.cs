@@ -99,6 +99,7 @@ namespace PointDefence.Core
             GameData.AlliedMissileManager.update();
             GameData.EnemyManager.update();
             GameData.ExplosionManager.update();
+            GameData.AudioManager.CheckBackgroundMusicPlaying();
         }
 
         private void Draw()

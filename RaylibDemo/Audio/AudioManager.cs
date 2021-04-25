@@ -15,7 +15,21 @@ namespace PointDefence.Audio
         {
             OpenAudioDevice();
             LoadSoundsFromDirectory();
+            PlayBackgroundMusic();
+
             Raylib.SetMasterVolume(0.3f);
+        }
+
+        public void CheckBackgroundMusicPlaying()
+        {
+            if (!Raylib.IsSoundPlaying(_audioDictionary["BackgroundLoop"]))
+                PlaySound("BackgroundLoop");
+        }
+
+        private void PlayBackgroundMusic()
+        {
+            SetSoundVolume("BackgroundLoop", 0.2f);
+            PlaySound("BackgroundLoop");
         }
 
         private void LoadSoundsFromDirectory()
@@ -46,6 +60,15 @@ namespace PointDefence.Audio
         public void StopSound(string sound)
         {
             Raylib.StopSound(GetSound(sound));
+        }
+
+        // 1.0 = Max Volume
+        public void SetSoundVolume(string sound, float volume)
+        {
+            if (_audioDictionary.ContainsKey(sound))
+                Raylib.SetSoundVolume(_audioDictionary[sound], volume);
+            else
+                throw new Exception($"Sound: {sound} is not an available sound.");
         }
 
         public void UnloadSounds()
